@@ -1,0 +1,137 @@
+# Sample Outputs for All Query Types - ACTUAL SYSTEM OUTPUTS
+
+## 1. Simple Direct Query
+**Query:** "What was Microsoft's total revenue in 2023?"
+
+```json
+{
+  "query": "What was Microsoft's total revenue in 2023?",
+  "answer": "Microsoft's total revenue for the fiscal year ending June 30, 2023, is not explicitly stated in the provided text. However, the text shows the revenue for two segments: Productivity and Business Processes ($69,274 million) and Intelligent Cloud ($87,907 million). The total revenue is not provided.",
+  "reasoning": "The provided text gives revenue figures for individual segments of Microsoft's business for the fiscal year ending June 30, 2023, but not the total revenue across all segments. More information is needed to calculate the total.",
+  "sub_queries": [
+    "What was NVIDIA's total revenue in fiscal year 2024?"
+  ],
+  "sources": [
+    {
+      "company": "MSFT",
+      "year": 2024,
+      "excerpt": "Highlights from fiscal year 2024 compared with fiscal year 2023 included: •Microsoft Cloud revenue increased 23% to $137",
+      "section": "full_document",
+      "relevance_score": 0.452
+    }
+  ],
+  "confidence": "high"
+}
+```
+
+## 2. Segment Analysis Query
+**Query:** "What percentage of Google's 2023 revenue came from advertising?"
+
+```json
+{
+  "query": "What percentage of Google's 2023 revenue came from advertising?",
+  "answer": "The provided text does not give a precise percentage of Google's 2023 revenue derived from advertising. While it states that Google Services (which includes advertising revenue) is the primary revenue generator for Google, and that Google Services revenues are \"primarily from advertising,\" no specific breakdown of the percentage is available. Therefore, a precise answer to the original query cannot be provided. The documents do provide Google's total revenue for 2024, but not for 2023.",
+  "reasoning": "The search results for \"GOOGLE total revenue 2023\" yielded documents [1] and [3] from GOOGL filings. Document [1] mentions the effective tax rate for 2023 but not total revenue. Document [3] provides total revenue for 2024 but not for 2023. The search results for \"GOOGLE segment revenue breakdown 2023\" (documents [1] and [3]) clarify that Google Services is the main revenue source and that advertising is the primary driver of Google Services revenue. However, these documents do not provide the numerical breakdown needed to calculate the percentage of total revenue attributable to advertising in 2023. To answer the query accurately, a document containing a detailed revenue breakdown by segment for the year 2023 is required.",
+  "sub_queries": [
+    "GOOGLE total revenue 2023",
+    "GOOGLE segment revenue breakdown 2023",
+    "GOOGLE total revenue 2023",
+    "GOOGLE segment revenue breakdown 2023"
+  ],
+  "sources": [
+    {
+      "company": "GOOGL",
+      "year": 2023,
+      "excerpt": "Financial ResultsRevenuesThe following table presents revenues by type (in millions):Year Ended December 31,20222023Google Search & other$162,450 $175,033 YouTube ads29,243 31,510 Google Network32,780...",
+      "section": "full_document",
+      "relevance_score": 0.57
+    },
+    {
+      "company": "GOOGL",
+      "year": 2024,
+      "excerpt": "Financial ResultsRevenuesThe following table presents revenues by type (in millions):Year Ended December 31,20232024Google Search & other$175,033 $198,084 YouTube ads31,510 36,147 Google Network31,312...",
+      "section": "full_document",
+      "relevance_score": 0.538
+    }
+  ],
+  "confidence": "low"
+}
+```
+
+## 3. Comparative Query (Agent Decomposition)
+**Query:** "How much did Microsoft's cloud revenue grow from 2022 to 2023?"
+
+```json
+{
+  "query": "How much did Microsoft's cloud revenue grow from 2022 to 2023?",
+  "answer": "Microsoft's cloud revenue increased by $26.2 billion (22%) from $95 billion in 2022 to $121.2 billion in 2023. Note that the provided text gives a figure of $111.6 billion for Microsoft Cloud revenue in 2023. However, this is likely a typo or an incomplete figure as the total revenue for 2023 is given as $211.915 billion, and the Intelligent Cloud segment alone accounts for $87.907 billion. The $111.6 billion figure is likely the sum of Intelligent Cloud and other cloud-related revenue streams not explicitly broken out in the provided text. Therefore, a precise calculation is not possible with the given data. The $121.2 billion figure is an approximation based on the assumption that the Intelligent Cloud segment represents the majority of Microsoft's cloud revenue.",
+  "reasoning": "The calculation is based on information extracted from the provided SEC filing excerpts. Document [2] for MSFT 2023 states that \"Microsoft Cloud revenue increased 22% to $111.6 billion\". However, this number is inconsistent with the total revenue reported for 2023 and the revenue reported for the Intelligent Cloud segment. The Intelligent Cloud segment revenue for 2023 is $87.907 billion, representing a significant portion of the overall cloud revenue.",
+  "sub_queries": [
+    "MICROSOFT revenue 2022",
+    "MICROSOFT revenue 2023"
+  ],
+  "sources": [
+    {
+      "company": "MSFT",
+      "year": 2022,
+      "excerpt": "Windows Commercial products and cloud services revenue increased 11% driven by demand for Microsoft 365",
+      "section": "full_document",
+      "relevance_score": 0.523
+    },
+    {
+      "company": "MSFT",
+      "year": 2023,
+      "excerpt": "rvices revenue growth Revenue from Windows Commercial products and cloud services, comprising volume licensing of the Windows operating system, Windows cloud services, and other Windows commercial off...",
+      "section": "full_document",
+      "relevance_score": 0.536
+    }
+  ],
+  "confidence": "medium"
+}
+```
+
+
+## 4. Complex Multi-Step Query
+**Query:** "Compare the R&D spending as a percentage of revenue across all three companies in 2023"
+
+```json
+{
+  "query": "Compare the R&D spending as a percentage of revenue across all three companies in 2023",
+  "answer": "In 2023, GOOGL spent 15% of revenue on R&D, while MSFT spent 13%. The provided text does not contain R&D spending as a percentage of revenue for a third company.",
+  "reasoning": "The answer is derived directly from the provided text. Source [1] states GOOGL's R&D expense as a percentage of revenue was 15% in 2023. Source [3] states MSFT's R&D expense as a percentage of revenue was 13% in 2023.",
+  "sub_queries": [
+    "Compare the R&D spending as a percentage of revenue across all three companies in 2023"
+  ],
+  "sources": [
+    {
+      "company": "GOOGL",
+      "year": 2024,
+      "excerpt": "Sales and MarketingThe following table presents sales and marketing expenses (in millions, except percentages): Year Ended December 31, 20232024Sales and marketing expenses$27,917 $27,808 Sales and ma...",
+      "section": "full_document",
+      "relevance_score": 0.327
+    },
+    {
+      "company": "MSFT",
+      "year": 2024,
+      "excerpt": "OPERATING EXPENSES Research and Development (In millions, except percentages) 2024 2023 PercentageChange Research and development $29,510 $27,195 9% As a percent of revenue 12% 13% (1)ppt Research and...",
+      "section": "full_document",
+      "relevance_score": 0.288
+    }
+  ],
+  "confidence": "high"
+}
+```
+
+## 5. Query Validation Example
+**Query:** "What are the main AI risks mentioned by each company and how do they differ?"
+
+```json
+{
+  "query": "What are the main AI risks mentioned by each company and how do they differ?",
+  "answer": "Invalid query: Query doesn't appear to be financial-related",
+  "reasoning": "Query validation failed",
+  "sub_queries": [],
+  "sources": [],
+  "confidence": "low"
+}
+```
