@@ -23,3 +23,9 @@ A RAG-based system with AI agent capabilities for answering complex financial qu
 - Cross-company: "Which company had the highest operating margin in 2023?"
 
 Built with Google Gemini, ChromaDB, and specialized financial document processing.
+
+Sample output can be found here: https://github.com/mananchopra/financial-q-a-system/blob/main/sample_outputs.md or https://github.com/mananchopra/financial-q-a-system/blob/main/sample_outputs.json
+
+Demo script to run all queries: https://github.com/mananchopra/financial-q-a-system/blob/main/run_all_queries.py
+
+Brief Design Doc: https://github.com/mananchopra/financial-q-a-system/blob/main/DESIGN.md
